@@ -51,41 +51,39 @@ function ReadingPage() {
           console.error('Error loading file:', error);
         });
     }
-  }, [book]);
 
+   if(bookContent) {
+      console.log(bookContent[currentPage].join('\n'));
+    }
+  }, [bookContent, currentPage]); //
   if(!book) {
     return <p>Book not found: {bookId}</p>;
   }
 
   return (
     <div className="ReadingPage">
-      <h1 style={{ textAlign: 'center' }}>{book.title}</h1>
+      <h1>{book.title}</h1>
       <div className='book-container'>
-        <p style={{ padding: '0 20px', whiteSpace: 'pre-wrap', fontFamily: 'Consolas' }}>{bookContent ? bookContent[currentPage].join('\n') : null}</p>
+        <p style={{ whiteSpace: 'pre-wrap', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', marginBottom: '0' }}>{bookContent ? bookContent[currentPage].join('\n') : null}</p>
       </div>
-      <ReactPaginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
-        breakLabel={'...'}
-        breakClassName={'break-me'}
-        pageCount={bookContent ? bookContent.length : 0}
-        marginPagesDisplayed={1}
-        pageRangeDisplayed={4}
-        onPageChange={({ selected }) => {
-          if(selected === 0 || selected === bookContent.length - 1) {
+      <div className='pagination-container'>
+        <ReactPaginate
+          previousLabel={'Previous'}
+          nextLabel={'Next'}
+          breakLabel={'...'}
+          breakClassName={'break-me'}
+          pageCount={bookContent ? bookContent.length : 0}
+          marginPagesDisplayed={2}
+          pageRangeDisplayed={5}
+          onPageChange={({ selected }) => {
             setCurrentPage(selected);
-          } else {
-            setCurrentPage(selected);
-            // You might add some logic here to manipulate forcePage prop to maintain a strict range
-          }
-        }}
-        forcePage={currentPage}
-        containerClassName={'pagination'}
-        activeClassName={'active'}
-      />
-
-    <WebPlayback trackId="7ovUcF5uHTBRzUpB6ZOmvt" />
-
+          }}
+          containerClassName={'pagination'}
+          activeClassName={'active'}
+        />
+      </div>
+      
+      <WebPlayback trackId="7ovUcF5uHTBRzUpB6ZOmvt" />
     </div>
   );
 }
