@@ -11,9 +11,17 @@ function ReadingPage() {
 
   const [bookContent, setBookContent] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
+  const [trackId, setTrackId] = useState("7ovUcF5uHTBRzUpB6ZOmvt");  // You can set initial track ID here
+
   
   const wordsPerLine = 10;
   const linesPerPage = 20;
+
+  function getSongIds() {
+    //Replace with API call to get song ids
+    return ["7ovUcF5uHTBRzUpB6ZOmvt"]
+  }
+  
 
   useEffect(() => {
     if(book) {
@@ -76,8 +84,8 @@ function ReadingPage() {
         activeClassName={'active'}
       />
 
-      <h1>TEST</h1>
-      <WebPlayback/>
+    <WebPlayback trackId="7ovUcF5uHTBRzUpB6ZOmvt" />
+
     </div>
   );
 }
