@@ -76,7 +76,7 @@
         "mode": 0,
         "acousticness": 0.3,
         "liveness": 0.5,
-        "valence": 0.6,
+        "valence": 0.5,
         "tempo": 100
     },
     "desire": {
@@ -146,7 +146,7 @@
         "mode": 0,
         "acousticness": 0.8,
         "liveness": 0.2,
-        "valence": 0.2,
+        "valence": 0.1,
         "tempo": 60
     },
     "gratitude": {
@@ -166,7 +166,7 @@
         "mode": 0,
         "acousticness": 0.9,
         "liveness": 0.1,
-        "valence": 0.1,
+        "valence": 0.05,
         "tempo": 50
     },
     "joy": {
@@ -196,7 +196,7 @@
         "mode": 1,
         "acousticness": 0.4,
         "liveness": 0.5,
-        "valence": 0.4,
+        "valence": 0.1,
         "tempo": 90
     },
     "optimism": {
@@ -246,7 +246,7 @@
         "mode": 0,
         "acousticness": 0.7,
         "liveness": 0.2,
-        "valence": 0.2,
+        "valence": 0.1,
         "tempo": 60
     },
     "sadness": {
@@ -256,7 +256,7 @@
         "mode": 0,
         "acousticness": 0.8,
         "liveness": 0.2,
-        "valence": 0.1,
+        "valence": 0.0,
         "tempo": 60
     },
     "surprise": {
