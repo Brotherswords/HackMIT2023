@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import SelectBook from './pages/SelectBook';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import ReadingPage from './pages/ReadingPage';
+import EReader from './pages/EReader';
 
 function App() {
   const [token, setToken] = useState("");
@@ -29,6 +30,7 @@ function App() {
         <Route path="/" element={!token ? <HomePage setToken={setToken} /> : <SelectBook setToken={setToken} />} />
           <Route path="select-book" element={<SelectBook setToken={setToken} />} /> {/* Pass setToken as a prop here */}
           <Route path="book-detail/:bookId" element={<ReadingPage />} />
+          <Route path="test-epub" element={<EReader />} />
         </Routes>
       </div>
     </Router>

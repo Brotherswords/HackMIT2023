@@ -52,27 +52,29 @@ function ReadingPage() {
   return (
     <div className="ReadingPage">
       <h1 style={{ textAlign: 'center' }}>{book.title}</h1>
-      <pre style={{ padding: '0 20px', whiteSpace: 'pre-wrap' }}>{bookContent ? bookContent[currentPage].join('\n') : null}</pre>
-<ReactPaginate
-  previousLabel={'previous'}
-  nextLabel={'next'}
-  breakLabel={'...'}
-  breakClassName={'break-me'}
-  pageCount={bookContent ? bookContent.length : 0}
-  marginPagesDisplayed={1}
-  pageRangeDisplayed={4}
-  onPageChange={({ selected }) => {
-    if(selected === 0 || selected === bookContent.length - 1) {
-      setCurrentPage(selected);
-    } else {
-      setCurrentPage(selected);
-      // You might add some logic here to manipulate forcePage prop to maintain a strict range
-    }
-  }}
-  forcePage={currentPage}
-  containerClassName={'pagination'}
-  activeClassName={'active'}
-/>
+      <div className='book-container'>
+        <pre style={{ padding: '0 20px', whiteSpace: 'pre-wrap', fontFamily: 'Consolas' }}>{bookContent ? bookContent[currentPage].join('\n') : null}</pre>
+      </div>
+      <ReactPaginate
+        previousLabel={'previous'}
+        nextLabel={'next'}
+        breakLabel={'...'}
+        breakClassName={'break-me'}
+        pageCount={bookContent ? bookContent.length : 0}
+        marginPagesDisplayed={1}
+        pageRangeDisplayed={4}
+        onPageChange={({ selected }) => {
+          if(selected === 0 || selected === bookContent.length - 1) {
+            setCurrentPage(selected);
+          } else {
+            setCurrentPage(selected);
+            // You might add some logic here to manipulate forcePage prop to maintain a strict range
+          }
+        }}
+        forcePage={currentPage}
+        containerClassName={'pagination'}
+        activeClassName={'active'}
+      />
 
       <h1>TEST</h1>
       <WebPlayback/>
