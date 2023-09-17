@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { BOOKS } from '../data/books.js';
 import '../css/ReadingPage.css';
+import WebPlayback from '../components/WebPlayback.js';
 
 function ReadingPage() {
   const { bookId } = useParams();
@@ -57,6 +58,8 @@ function ReadingPage() {
         containerClassName={'pagination'}
         activeClassName={'active'}
       />
+      <h1>TEST</h1>
+      <WebPlayback/>
     </div>
   );
 }
