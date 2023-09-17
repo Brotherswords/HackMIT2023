@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from 'react';
+import '../css/Webplayer.css'; // Assuming you have separate CSS for the homepage
+import 'font-awesome/css/font-awesome.min.css';
+
 
 const track = {
     name: "",
@@ -12,36 +15,50 @@ const track = {
     ]
 };
 
-function WebPlayback(props) {
-
+function WebPlayback({ trackId }) {
     const [player, setPlayer] = useState(undefined);
     const [is_paused, setPaused] = useState(false);
-    // eslint-disable-next-line no-unused-vars
-    const [is_active, setActive] = useState(false); 
+    const [, setActive] = useState(false);
     const [current_track, setTrack] = useState(track);
+    const [deviceId, setDeviceId] = useState(null);
 
     let token = window.localStorage.getItem('token');
 
+    const controlPlayback = (player, endpoint, method = 'PUT', body = null) => {
+        fetch(`https://api.spotify.com/v1/me/player/${endpoint}`, {
+            method,
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: body && JSON.stringify(body)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    };
+
+    const playTrack = (player, trackId, device_id) => {
+        controlPlayback(player, `play?device_id=${device_id}`, 'PUT', { uris: [`spotify:track:${trackId}`] });
+    };
+
+    const pauseTrack = (player) => {
+        controlPlayback(player, 'pause', 'PUT');
+    };
+
+    const previousTrack = (player) => {
+        controlPlayback(player, 'previous', 'POST');
+    };
+
+    const nextTrack = (player) => {
+        controlPlayback(player, 'next', 'POST');
+    };
+
     useEffect(() => {
-
-        const playTrack = (player, trackId, device_id) => {
-            fetch("https://api.spotify.com/v1/me/player/play?device_id=" + device_id, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ uris: [`spotify:track:${trackId}`] })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        };
-
         const script = document.createElement("script");
         script.src = "https://sdk.scdn.co/spotify-player.js";
         script.async = true;
@@ -49,7 +66,6 @@ function WebPlayback(props) {
         document.body.appendChild(script);
 
         window.onSpotifyWebPlaybackSDKReady = () => {
-
             const player = new window.Spotify.Player({
                 name: 'Web Playback SDK',
                 getOAuthToken: cb => { cb(token); },
@@ -60,8 +76,8 @@ function WebPlayback(props) {
 
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
-
-                playTrack(player, "7ovUcF5uHTBRzUpB6ZOmvt", device_id);
+                setDeviceId(device_id);  // Storing the device ID
+                playTrack(player, trackId, device_id);
             });
 
             player.addListener('not_ready', ({ device_id }) => {
@@ -70,7 +86,7 @@ function WebPlayback(props) {
 
             player.connect();
 
-            player.addListener('player_state_changed', ( state => {
+            player.addListener('player_state_changed', (state) => {
                 if (!state) {
                     return;
                 }
@@ -78,39 +94,26 @@ function WebPlayback(props) {
                 setTrack(state.track_window.current_track);
                 setPaused(state.paused);
 
-                player.getCurrentState().then(state => { 
+                player.getCurrentState().then(state => {
                     (!state)? setActive(false) : setActive(true);
                 });
-            }));            
+            });
         };
     }, [token]);
 
     return (
-      <>
-        <div className="container">
-           <div className="main-wrapper">
-                <h1>WebPlayback</h1>
-                <img src={current_track.album.images[0]?.url || ""} 
-                     className="now-playing__cover" alt="" />
-
-                <div className="now-playing__side">
-                    <div className="now-playing__name">{current_track.name}</div>
-                    <div className="now-playing__artist">{current_track.artists[0]?.name || ""}</div>
-                </div>
-                <button className="btn-spotify" onClick={() => { player?.previousTrack() }} >
-                    &lt;&lt;
-                </button>
-
-                <button className="btn-spotify" onClick={() => { player?.togglePlay() }} >
-                    { is_paused ? "PLAY" : "PAUSE" }
-                </button>
-
-                <button className="btn-spotify" onClick={() => { player?.nextTrack() }} >
-                    &gt;&gt;
-                </button>
-            </div>
+    <div className="music-bar">
+        <div className="music-info">
+            <img src={current_track.album.images[0]?.url || ""} className="music-icon" alt="music icon" />
+            <span className="music-name">{current_track.name}</span>
         </div>
-      </>
+        <div className="music-control">
+            <button className="control-button" onClick={() => is_paused ? playTrack(player, current_track.id, deviceId) : pauseTrack(player)}>
+                { is_paused ? <i className="fa fa-play"></i> : <i className="fa fa-pause"></i> }
+            </button>
+            <span className="now-playing">Now Playing</span>
+        </div>
+    </div>
     );
 }
 
