@@ -7,7 +7,7 @@ import WebPlayback from '../components/WebPlayback.js';
 
 function ReadingPage() {
   const { bookId } = useParams();
-  const book = BOOKS[bookId];
+  const book = BOOKS[bookId-1];
 
   const [bookContent, setBookContent] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
@@ -61,7 +61,7 @@ function ReadingPage() {
     <div className="ReadingPage">
       <h1 style={{ textAlign: 'center' }}>{book.title}</h1>
       <div className='book-container'>
-        <pre style={{ padding: '0 20px', whiteSpace: 'pre-wrap', fontFamily: 'Consolas' }}>{bookContent ? bookContent[currentPage].join('\n') : null}</pre>
+        <p style={{ padding: '0 20px', whiteSpace: 'pre-wrap', fontFamily: 'Consolas' }}>{bookContent ? bookContent[currentPage].join('\n') : null}</p>
       </div>
       <ReactPaginate
         previousLabel={'previous'}

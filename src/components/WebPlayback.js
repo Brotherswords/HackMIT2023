@@ -111,7 +111,7 @@ function WebPlayback({ trackId }) {
             <button className="control-button" onClick={() => is_paused ? playTrack(player, current_track.id, deviceId) : pauseTrack(player)}>
                 { is_paused ? <i className="fa fa-play"></i> : <i className="fa fa-pause"></i> }
             </button>
-            <span className="now-playing">Now Playing</span>
+            {/* <span className="now-playing">Now Playing</span> */}
         </div>
     </div>
     );

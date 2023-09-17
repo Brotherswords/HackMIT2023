@@ -5,7 +5,7 @@ import '../css/HomePage.css'; // Assuming you have separate CSS for the homepage
 function HomePage({ setToken, token }) {
   const navigate = useNavigate();
 
-  const CLIENT_ID = "b03a524109544e15ba71c3896c899e2b";
+  const CLIENT_ID = "659a2f5aa41f4adc83ae7e46491a832a";
   const REDIRECT_URI = "http://localhost:3000";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";

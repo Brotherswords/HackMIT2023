@@ -16,7 +16,7 @@ const EReader = () => {
                 <ReactReader
                     location={location}
                     locationChanged={locationChanged}
-                    url="https://react-reader.metabits.no/files/alice.epub"
+                    url="https://standardebooks.org/ebooks/bram-stoker/dracula/downloads/bram-stoker_dracula.epub"
                 />
             </div>
         </div>  
