@@ -24,11 +24,18 @@
     text-align: center;
     width: 150px;
     cursor: pointer; /* Change cursor to pointer on hover */
-    transition: transform 0.3s; /* Add transition for smooth animation */
+    transition: transform 0.3s, box-shadow 0.3s; /* Add transitions for smooth animations */
+    
+    /* Adding box shadow for elevation */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1); 
   }
   
   .book-tile:hover {
-    transform: scale(1.05); /* Increase size on hover */
+    /* Increasing shadow on hover for a lifted effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.2); 
+    
+    /* Add a slight scale to give a raised effect on hover */
+    transform: scale(1.05); 
   }
   
   .book-tile img {
@@ -37,4 +44,30 @@
     object-fit: cover;
     margin-bottom: 10px;
   }
+  .settings-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .settings-icon img {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+
+
   

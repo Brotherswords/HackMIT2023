@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import HomePage from './pages/HomePage';
 import SelectBook from './pages/SelectBook';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ReadingPage from './pages/ReadingPage';
 
 function App() {
   const [token, setToken] = useState("");
@@ -22,13 +24,15 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      {!token ? (
-        <HomePage setToken={setToken} />
-      ) : (
-        <SelectBook />
-      )}
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+        <Route path="/" element={!token ? <HomePage setToken={setToken} /> : <SelectBook setToken={setToken} />} />
+          <Route path="select-book" element={<SelectBook setToken={setToken} />} /> {/* Pass setToken as a prop here */}
+          <Route path="book-detail/:bookId" element={<ReadingPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

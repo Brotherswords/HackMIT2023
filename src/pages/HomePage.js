@@ -1,11 +1,20 @@
-import React from 'react';
-import '../css/HomePage.css';//Assuming you have separate CSS for the homepage
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import '../css/HomePage.css'; // Assuming you have separate CSS for the homepage
 
-function HomePage({ setToken }) {
+function HomePage({ setToken, token }) {
+  const navigate = useNavigate();
+
   const CLIENT_ID = "b03a524109544e15ba71c3896c899e2b";
   const REDIRECT_URI = "http://localhost:3000";
   const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize";
   const RESPONSE_TYPE = "token";
+
+  useEffect(() => {
+    if (token) {
+      navigate('/select-book');
+    }
+  }, [token, navigate]);
 
   return (
     <div className="Homepage">
@@ -23,3 +32,6 @@ function HomePage({ setToken }) {
 }
 
 export default HomePage;
+
+//curl -X "POST" -H "Content-Type: application/x-www-form-urlencoded" -d "grant_type=client_credentials" "https://accounts.spotify.com/api/token" --user "b03a524109544e15ba71c3896c899e2b:d49e4672dcfd4b868d8f2adda0aec41e"
+//curl -X "GET" "https://api.spotify.com/v1/tracks/7rQbD5N1rGu7E36rpPJOw5" -H "Authorization: Bearer BQB7-NeTMKnrGIN3GaQkpjXsH9AEvsOcmEdIVs1bKy-H3lBViVbymRawIJsnKTnSAHhLTEOqhYP3NY2ha7ugJSaGuNkCvHC1StBSBvwVQ_B_C_zI0fw"
