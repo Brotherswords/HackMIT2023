@@ -1,0 +1,282 @@
+{
+    "admiration": {
+        "energy": 0.6,
+        "danceability": 0.7,
+        "loudness": 0.6,
+        "mode": 1,
+        "acousticness": 0.3,
+        "liveness": 0.6,
+        "valence": 0.7,
+        "tempo": 100
+    },
+    "amusement": {
+        "energy": 0.8,
+        "danceability": 0.9,
+        "loudness": 0.7,
+        "mode": 1,
+        "acousticness": 0.2,
+        "liveness": 0.8,
+        "valence": 0.9,
+        "tempo": 120
+    },
+    "anger": {
+        "energy": 0.9,
+        "danceability": 0.4,
+        "loudness": 0.9,
+        "mode": 1,
+        "acousticness": 0.1,
+        "liveness": 0.8,
+        "valence": 0.2,
+        "tempo": 144
+    },
+    "annoyance": {
+        "energy": 0.6,
+        "danceability": 0.2,
+        "loudness": 0.7,
+        "mode": 0,
+        "acousticness": 0.5,
+        "liveness": 0.4,
+        "valence": 0.1,
+        "tempo": 80
+    },
+    "approval": {
+        "energy": 0.7,
+        "danceability": 0.7,
+        "loudness": 0.6,
+        "mode": 1,
+        "acousticness": 0.6,
+        "liveness": 0.5,
+        "valence": 0.8,
+        "tempo": 110
+    },
+    "caring": {
+        "energy": 0.3,
+        "danceability": 0.6,
+        "loudness": 0.3,
+        "mode": 1,
+        "acousticness": 0.7,
+        "liveness": 0.5,
+        "valence": 0.8,
+        "tempo": 70
+    },
+    "confusion": {
+        "energy": 0.4,
+        "danceability": 0.3,
+        "loudness": 0.6,
+        "mode": 0,
+        "acousticness": 0.6,
+        "liveness": 0.3,
+        "valence": 0.2,
+        "tempo": 90
+    },
+    "curiosity": {
+        "energy": 0.7,
+        "danceability": 0.6,
+        "loudness": 0.4,
+        "mode": 0,
+        "acousticness": 0.3,
+        "liveness": 0.5,
+        "valence": 0.6,
+        "tempo": 100
+    },
+    "desire": {
+        "energy": 0.7,
+        "danceability": 0.8,
+        "loudness": 0.7,
+        "mode": 1,
+        "acousticness": 0.2,
+        "liveness": 0.7,
+        "valence": 0.8,
+        "tempo": 120
+    },
+    "disappointment": {
+        "energy": 0.4,
+        "danceability": 0.2,
+        "loudness": 0.5,
+        "mode": 0,
+        "acousticness": 0.6,
+        "liveness": 0.3,
+        "valence": 0.3,
+        "tempo": 70
+    },
+    "disapproval": {
+        "energy": 0.3,
+        "danceability": 0.2,
+        "loudness": 0.3,
+        "mode": 0,
+        "acousticness": 0.8,
+        "liveness": 0.2,
+        "valence": 0.2,
+        "tempo": 60
+    },
+    "disgust": {
+        "energy": 0.2,
+        "danceability": 0.1,
+        "loudness": 0.2,
+        "mode": 0,
+        "acousticness": 0.9,
+        "liveness": 0.1,
+        "valence": 0.1,
+        "tempo": 50
+    },
+    "embarrassment": {
+        "energy": 0.3,
+        "danceability": 0.3,
+        "loudness": 0.3,
+        "mode": 0,
+        "acousticness": 0.6,
+        "liveness": 0.2,
+        "valence": 0.3,
+        "tempo": 60
+    },
+    "excitement": {
+        "energy": 0.8,
+        "danceability": 0.8,
+        "loudness": 0.7,
+        "mode": 1,
+        "acousticness": 0.2,
+        "liveness": 0.8,
+        "valence": 0.8,
+        "tempo": 120
+    },
+    "fear": {
+        "energy": 0.2,
+        "danceability": 0.2,
+        "loudness": 0.3,
+        "mode": 0,
+        "acousticness": 0.8,
+        "liveness": 0.2,
+        "valence": 0.2,
+        "tempo": 60
+    },
+    "gratitude": {
+        "energy": 0.6,
+        "danceability": 0.6,
+        "loudness": 0.3,
+        "mode": 1,
+        "acousticness": 0.3,
+        "liveness": 0.5,
+        "valence": 0.7,
+        "tempo": 100
+    },
+    "grief": {
+        "energy": 0.1,
+        "danceability": 0.2,
+        "loudness": 0.2,
+        "mode": 0,
+        "acousticness": 0.9,
+        "liveness": 0.1,
+        "valence": 0.1,
+        "tempo": 50
+    },
+    "joy": {
+        "energy": 0.8,
+        "danceability": 0.8,
+        "loudness": 0.7,
+        "mode": 1,
+        "acousticness": 0.2,
+        "liveness": 0.8,
+        "valence": 0.9,
+        "tempo": 120
+    },
+    "love": {
+        "energy": 0.7,
+        "danceability": 0.7,
+        "loudness": 0.6,
+        "mode": 1,
+        "acousticness": 0.3,
+        "liveness": 0.5,
+        "valence": 0.95,
+        "tempo": 110
+    },
+    "nervousness": {
+        "energy": 0.5,
+        "danceability": 0.3,
+        "loudness": 0.5,
+        "mode": 1,
+        "acousticness": 0.4,
+        "liveness": 0.5,
+        "valence": 0.4,
+        "tempo": 90
+    },
+    "optimism": {
+        "energy": 0.7,
+        "danceability": 0.8,
+        "loudness": 0.7,
+        "mode": 1,
+        "acousticness": 0.2,
+        "liveness": 0.7,
+        "valence": 0.8,
+        "tempo": 120
+    },
+    "pride": {
+        "energy": 0.7,
+        "danceability": 0.7,
+        "loudness": 0.6,
+        "mode": 1,
+        "acousticness": 0.3,
+        "liveness": 0.6,
+        "valence": 0.8,
+        "tempo": 110
+    },
+    "realization": {
+        "energy": 0.5,
+        "danceability": 0.5,
+        "loudness": 0.5,
+        "mode": 1,
+        "acousticness": 0.4,
+        "liveness": 0.5,
+        "valence": 0.7,
+        "tempo": 90
+    },
+    "relief": {
+        "energy": 0.4,
+        "danceability": 0.6,
+        "loudness": 0.3,
+        "mode": 1,
+        "acousticness": 0.3,
+        "liveness": 0.5,
+        "valence": 0.7,
+        "tempo": 100
+    },
+    "remorse": {
+        "energy": 0.3,
+        "danceability": 0.2,
+        "loudness": 0.3,
+        "mode": 0,
+        "acousticness": 0.7,
+        "liveness": 0.2,
+        "valence": 0.2,
+        "tempo": 60
+    },
+    "sadness": {
+        "energy": 0.2,
+        "danceability": 0.4,
+        "loudness": 0.2,
+        "mode": 0,
+        "acousticness": 0.8,
+        "liveness": 0.2,
+        "valence": 0.1,
+        "tempo": 60
+    },
+    "surprise": {
+        "energy": 0.8,
+        "danceability": 0.5,
+        "loudness": 0.8,
+        "mode": 1,
+        "acousticness": 0.2,
+        "liveness": 0.8,
+        "valence": 0.8,
+        "tempo": 120
+    },
+    "neutral": {
+        "energy": 0.2,
+        "danceability": 0.2,
+        "loudness": 0.2,
+        "mode": 1,
+        "acousticness": 0.5,
+        "liveness": 0.3,
+        "valence": 0.5,
+        "tempo": 100
+    }
+}

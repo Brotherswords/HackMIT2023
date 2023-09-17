@@ -11,20 +11,33 @@ function ReadingPage() {
 
   const [bookContent, setBookContent] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
-  const [trackId, setTrackId] = useState("7ovUcF5uHTBRzUpB6ZOmvt");  // You can set initial track ID here
+  const [trackId, setTrackId] = useState("");
 
-  
   const wordsPerLine = 10;
   const linesPerPage = 20;
 
-  function getSongIds() {
-    //Replace with API call to get song ids
-    return ["7ovUcF5uHTBRzUpB6ZOmvt"]
+  async function getSongIds() {
+    if (bookContent) {
+      try {
+        const currentPageContent = bookContent[currentPage].join(' ');
+        const response = await fetch('http://localhost:8000/tim/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ content: currentPageContent })
+        })
+        .then(response => response.json());
+        console.log("SONGID:" + response.song_id);
+        setTrackId(response.song_id);
+      } catch (error) {
+        console.error('Error fetching track ID:', error);
+      }
+    }
   }
-  
 
   useEffect(() => {
-    if(book) {
+    if (book) {
       import(`../data/book_info/${book.title}.txt`)
         .then(module => {
           fetch(module.default)
@@ -38,12 +51,13 @@ function ReadingPage() {
               const pages = [];
               for (let i = 0; i < lines.length; i += linesPerPage) {
                 const page = lines.slice(i, i + linesPerPage);
-                while(page.length < linesPerPage) {
+                while (page.length < linesPerPage) {
                   page.push(' '.repeat(wordsPerLine)); // fill with whitespace
                 }
                 pages.push(page);
               }
               setBookContent(pages);
+              getSongIds(); // Calling getSongIds here after setting bookContent
             })
             .catch(error => console.error('Error loading book content:', error));
         })
@@ -51,12 +65,16 @@ function ReadingPage() {
           console.error('Error loading file:', error);
         });
     }
+  }, [book]);
 
-   if(bookContent) {
+  useEffect(() => {
+    if (bookContent) {
       console.log(bookContent[currentPage].join('\n'));
+      getSongIds(); // Ensures getSongIds is called when currentPage changes
     }
-  }, [bookContent, currentPage]); //
-  if(!book) {
+  }, [bookContent, currentPage]);
+
+  if (!book) {
     return <p>Book not found: {bookId}</p>;
   }
 
@@ -64,7 +82,9 @@ function ReadingPage() {
     <div className="ReadingPage">
       <h1>{book.title}</h1>
       <div className='book-container'>
-        <p style={{ whiteSpace: 'pre-wrap', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', marginBottom: '0' }}>{bookContent ? bookContent[currentPage].join('\n') : null}</p>
+        <p style={{ whiteSpace: 'pre-wrap', fontFamily: 'Arial, sans-serif', lineHeight: '1.6', marginBottom: '0' }}>
+          {bookContent ? bookContent[currentPage].join('\n') : null}
+        </p>
       </div>
       <div className='pagination-container'>
         <ReactPaginate
@@ -77,13 +97,15 @@ function ReadingPage() {
           pageRangeDisplayed={5}
           onPageChange={({ selected }) => {
             setCurrentPage(selected);
+            getSongIds();
           }}
           containerClassName={'pagination'}
           activeClassName={'active'}
         />
       </div>
       
-      <WebPlayback trackId="7ovUcF5uHTBRzUpB6ZOmvt" />
+      {trackId && <WebPlayback trackId={trackId} />}
+
     </div>
   );
 }

@@ -2,24 +2,23 @@ import React, { useState, useEffect } from 'react';
 import '../css/Webplayer.css'; // Assuming you have separate CSS for the homepage
 import 'font-awesome/css/font-awesome.min.css';
 
-
-const track = {
-    name: "",
-    album: {
-        images: [
-            { url: "" }
-        ]
-    },
-    artists: [
-        { name: "" }
-    ]
+const defaultTrack = {
+  name: "",
+  album: {
+      images: [
+          { url: "" }
+      ]
+  },
+  artists: [
+      { name: "" }
+  ]
 };
 
 function WebPlayback({ trackId }) {
     const [player, setPlayer] = useState(undefined);
     const [is_paused, setPaused] = useState(false);
     const [, setActive] = useState(false);
-    const [current_track, setTrack] = useState(track);
+    const [current_track, setTrack] = useState(defaultTrack);
     const [deviceId, setDeviceId] = useState(null);
 
     let token = window.localStorage.getItem('token');
@@ -43,19 +42,13 @@ function WebPlayback({ trackId }) {
     };
 
     const playTrack = (player, trackId, device_id) => {
-        controlPlayback(player, `play?device_id=${device_id}`, 'PUT', { uris: [`spotify:track:${trackId}`] });
+        if(trackId != null){
+            controlPlayback(player, `play?device_id=${device_id}`, 'PUT', { uris: [`spotify:track:${trackId}`] });
+        }
     };
 
     const pauseTrack = (player) => {
         controlPlayback(player, 'pause', 'PUT');
-    };
-
-    const previousTrack = (player) => {
-        controlPlayback(player, 'previous', 'POST');
-    };
-
-    const nextTrack = (player) => {
-        controlPlayback(player, 'next', 'POST');
     };
 
     useEffect(() => {
@@ -76,7 +69,7 @@ function WebPlayback({ trackId }) {
 
             player.addListener('ready', ({ device_id }) => {
                 console.log('Ready with Device ID', device_id);
-                setDeviceId(device_id);  // Storing the device ID
+                setDeviceId(device_id);  
                 playTrack(player, trackId, device_id);
             });
 
@@ -87,33 +80,33 @@ function WebPlayback({ trackId }) {
             player.connect();
 
             player.addListener('player_state_changed', (state) => {
-                if (!state) {
-                    return;
+                console.log('player_state_changed', state);
+                if (state && state.track_window.current_track) {
+                    setTrack(state.track_window.current_track);
+                }
+                if (state) {
+                    setPaused(state.paused);
                 }
 
-                setTrack(state.track_window.current_track);
-                setPaused(state.paused);
-
                 player.getCurrentState().then(state => {
-                    (!state)? setActive(false) : setActive(true);
+                    (!state) ? setActive(false) : setActive(true);
                 });
             });
         };
-    }, [token]);
+    }, [token, trackId]);
 
     return (
-    <div className="music-bar">
-        <div className="music-info">
-            <img src={current_track.album.images[0]?.url || ""} className="music-icon" alt="music icon" />
-            <span className="music-name">{current_track.name}</span>
+        <div className="music-bar">
+            <div className="music-info">
+                <img src={current_track.album?.images[0]?.url || ""} className="music-icon" alt="music icon" />
+                <span className="music-name">{current_track.name || ""}</span>
+            </div>
+            <div className="music-control">
+                <button className="control-button" onClick={() => is_paused ? playTrack(player, current_track.id, deviceId) : pauseTrack(player)}>
+                    { is_paused ? <i className="fa fa-play"></i> : <i className="fa fa-pause"></i> }
+                </button>
+            </div>
         </div>
-        <div className="music-control">
-            <button className="control-button" onClick={() => is_paused ? playTrack(player, current_track.id, deviceId) : pauseTrack(player)}>
-                { is_paused ? <i className="fa fa-play"></i> : <i className="fa fa-pause"></i> }
-            </button>
-            {/* <span className="now-playing">Now Playing</span> */}
-        </div>
-    </div>
     );
 }
 

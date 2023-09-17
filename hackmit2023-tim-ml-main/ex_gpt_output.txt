@@ -1,0 +1,21 @@
+{
+  "id": "chatcmpl-7zZSoRcG6LTtHMONRTgZmiECwNPTJ",
+  "object": "chat.completion",
+  "created": 1694908686,
+  "model": "gpt-3.5-turbo-0613",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "Greetings, human! I am a humble robot, without a name. As for water, well, I don't really have personal preferences, but I must admit, I find it quite refreshing to observe."
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 45,
+    "completion_tokens": 41,
+    "total_tokens": 86
+  }
+}
