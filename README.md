@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Getting Started with TiM: Text into Music
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to TiM: Text into Music, a pioneering project showcased at HackMIT 2023! Crafted with innovation and passion by Emma Qin (MIT '24), Lavan Vivekanandasarma (CU Denver '25), Hector Astrom (MIT '27) & Alec Wang (CU Boulder '26), TiM transforms the narrative of your chosen book into a harmonious musical experience, syncing it seamlessly with a track on Spotify. Follow the steps below to set up and immerse yourself in a melody woven from words:
 
-## Available Scripts
+## Setting Up Your Development Environment
 
-In the project directory, you can run:
+### Pre-requesites: 
+1. For the Backend API the following packages need to be installed in your Python Environement: 
+   - numpy
+   - fastapi
+   - uvicorn
+   - pydantic
 
-### `npm start`
+    Install these with:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+    ```pip install numpy fastapi uvicorn pydantic```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    Running the API should automatically install Pytorch and other required packages should you not have them. 
 
-### `npm test`
+2. For the ReactJS frontend be sure to install ReactJS and install dependencies before running with:
+   
+   ```npm i```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Step 1: Clone the Repository
+```git clone https://github.com/Brotherswords/HackMIT2023.git```
 
-### `npm run build`
+### Step 2: Setup Your Workspace
+Open two separate terminal windows in the project directory to manage backend and frontend services.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Step 3: Initialize the Backend Service
+In one of the terminal windows, navigate to `hackmit-tim-ml-main` using the command:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```cd hackmit-tim-ml-main``` 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+then use the command to start the API:
 
-### `npm run eject`
+```uvicorn fastapi_demo:app --reload```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Step 4: Kickstart the Frontend Service
+In the other terminal window, execute the following command to launch the frontend service: 
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```npm start```
+### Step 5: Dive into the Musical Narrative
+Log in to your Spotify account and select a book. The on-screen text will be analyzed and transformed into a musical ID, directing you to a corresponding Spotify track that resonates with the narrative, creating a harmonic amalgamation of story and music.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+We hope you enjoy this innovative blend of literature and music, creating a serene auditory landscape that complements the literary world.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Happy listening and happy reading! 📚🎶

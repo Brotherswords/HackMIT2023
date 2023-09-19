@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../css/HomePage.css'; // Assuming you have separate CSS for the homepage
+import tim from '../assets/tim_logo.jpeg'
 
 function HomePage({ setToken, token }) {
   const navigate = useNavigate();
@@ -23,7 +24,10 @@ function HomePage({ setToken, token }) {
   return (
     <div className="Homepage">
       <header className="App-header">
-        <h1>TiM</h1>
+      <div>
+      <img src={tim} alt="Tim Logo" style={{ width: '100px', height: '100px' }} />
+
+    </div>
         <a 
           href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&scope=${SCOPE}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`} 
           className="login-button"
